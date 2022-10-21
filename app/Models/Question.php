@@ -11,6 +11,17 @@ class Question extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title', 'slug','body','category_id','user_id'
+    ];
+
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+
     /**
      * Get the user that owns the Question
      *
@@ -40,4 +51,9 @@ class Question extends Model
      {
          return $this->belongsTo(Category::class);
      }
-}
+
+     public function getPathAttribute()
+     {
+        return asset("api/question/$this->slug");
+     }
+}   
