@@ -11,6 +11,8 @@ class Reply extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     /**
      * Get the question that owns the Reply
      *
